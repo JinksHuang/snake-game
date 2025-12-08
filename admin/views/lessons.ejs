@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>小节管理</title></head>
+<body>
+  <a href="/courses/<%= courseId %>/modules">返回模块</a>
+  <h2>模块：<%= module.title %></h2>
+  <table border="1" cellpadding="6">
+    <tr><th>标题</th><th>排序</th><th>试看</th><th>操作</th></tr>
+    <% lessons.forEach(l => { %>
+      <tr>
+        <td><%= l.title %></td>
+        <td><%= l.sort_order %></td>
+        <td><%= l.is_preview ? '是' : '否' %></td>
+        <td>
+          <form method="POST" action="/lessons/<%= l.id %>">
+            <input type="hidden" name="module_id" value="<%= module.id %>" />
+            <input type="hidden" name="course_id" value="<%= courseId %>" />
+            <div>标题：<input name="title" value="<%= l.title %>" /></div>
+            <div>排序：<input name="sort_order" value="<%= l.sort_order %>" /></div>
+            <div>视频：<input name="video_url" value="<%= l.video_url %>" /></div>
+            <div>内容：<textarea name="content_richtext"><%= l.content_richtext %></textarea></div>
+            <div>试看：<input type="checkbox" name="is_preview" value="1" <%= l.is_preview ? 'checked' : '' %> /></div>
+            <div>时长：<input name="duration" value="<%= l.duration %>" /></div>
+            <button type="submit">保存</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+  <h3>新增小节</h3>
+  <form method="POST" action="/modules/<%= module.id %>/lessons">
+    <input type="hidden" name="course_id" value="<%= courseId %>" />
+    <div>标题：<input name="title" /></div>
+    <div>排序：<input name="sort_order" /></div>
+    <div>视频：<input name="video_url" /></div>
+    <div>内容：<textarea name="content_richtext"></textarea></div>
+    <div>试看：<input type="checkbox" name="is_preview" value="1" /></div>
+    <div>时长：<input name="duration" /></div>
+    <button type="submit">添加</button>
+  </form>
+</body>
+</html>

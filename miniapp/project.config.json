@@ -1,0 +1,8 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "private-course-miniapp",
+  "appid": "YOUR_APPID",
+  "setting": {
+    "urlCheck": false
+  }
+}

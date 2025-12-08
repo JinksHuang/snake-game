@@ -1,0 +1,23 @@
+<view class="card">
+  <video src="{{lesson.video_url}}" controls style="width:100%;height:300rpx;"></video>
+  <view style="margin-top:8rpx;">{{lesson.title}} · {{lesson.duration || ''}}</view>
+  <view style="margin-top:12rpx;">
+    <rich-text nodes="{{contentNodes}}"></rich-text>
+  </view>
+</view>
+<view class="card">
+  <view style="font-weight:bold;margin-bottom:8rpx;">目录</view>
+  <block wx:for="{{modules}}" wx:key="id">
+    <view style="font-weight:bold; margin:8rpx 0;">{{item.title}}</view>
+    <block wx:for="{{lessons[item.id]}}" wx:key="id">
+      <view class="lesson-row" data-lesson-id="{{item2.id}}" bindtap="switchLesson">
+        <text>{{item2.title}}</text>
+        <text class="{{item2.is_preview || purchased ? '' : 'locked'}}">{{item2.is_preview? '试看' : (purchased ? '已解锁' : '已锁定')}}</text>
+      </view>
+    </block>
+  </block>
+  <view style="margin-top:8rpx;color:#666;">学习进度：已学 {{progress.completed_lessons_count || 0}} / {{totalLessons}}</view>
+</view>
+<view class="card">
+  <button type="primary" bindtap="showCommunity">加企微/进社群</button>
+</view>

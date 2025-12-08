@@ -1,0 +1,18 @@
+<view class="card" style="display:flex;align-items:center;">
+  <image src="{{user.avatar || 'https://placekitten.com/200/200'}}" style="width:120rpx;height:120rpx;border-radius:50%;" />
+  <view style="margin-left:16rpx;">
+    <view style="font-size:32rpx;font-weight:bold;">{{user.nickname || '学员'}}</view>
+    <view style="color:#666;">欢迎回来</view>
+  </view>
+</view>
+<view class="card">
+  <view style="font-weight:bold;margin-bottom:8rpx;">已购课程</view>
+  <block wx:for="{{courses}}" wx:key="id">
+    <view style="margin:8rpx 0;">{{item.title}}</view>
+  </block>
+  <button style="margin-top:12rpx;" bindtap="goOrders">查看订单</button>
+</view>
+<view class="card">
+  <view style="font-weight:bold;margin-bottom:8rpx;">社群/企微入口</view>
+  <view>运营可在后台配置二维码链接和文案。</view>
+</view>

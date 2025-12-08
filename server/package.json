@@ -1,0 +1,20 @@
+{
+  "name": "private-course-server",
+  "version": "1.0.0",
+  "description": "Express backend for private course miniapp",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "node src/app.js",
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.9.7",
+    "uuid": "^9.0.1"
+  }
+}
