@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>模块管理</title></head>
+<body>
+  <a href="/courses">返回课程</a>
+  <h2><%= course.title %> 模块</h2>
+  <table border="1" cellpadding="6">
+    <tr><th>标题</th><th>排序</th><th>小节</th></tr>
+    <% modules.forEach(m => { %>
+      <tr>
+        <td><%= m.title %></td>
+        <td><%= m.sort_order %></td>
+        <td><a href="/modules/<%= m.id %>/lessons?courseId=<%= course.id %>">管理小节</a></td>
+      </tr>
+    <% }) %>
+  </table>
+  <h3>新增模块</h3>
+  <form method="POST" action="/courses/<%= course.id %>/modules">
+    <div>标题：<input name="title" /></div>
+    <div>排序：<input name="sort_order" /></div>
+    <button type="submit">添加</button>
+  </form>
+</body>
+</html>

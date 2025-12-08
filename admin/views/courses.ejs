@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>课程管理</title></head>
+<body>
+  <a href="/logout">退出</a>
+  <h2>课程列表</h2>
+  <a href="/courses/new">新建课程</a>
+  <table border="1" cellpadding="6">
+    <tr><th>名称</th><th>讲师</th><th>价格</th><th>上架</th><th>推荐</th><th>操作</th></tr>
+    <% courses.forEach(c => { %>
+      <tr>
+        <td><%= c.title %></td>
+        <td><%= c.teacher_id || '-' %></td>
+        <td>¥<%= c.price %></td>
+        <td><%= c.is_published ? '是' : '否' %></td>
+        <td><%= c.is_recommended ? '是' : '否' %></td>
+        <td>
+          <a href="/courses/<%= c.id %>/edit">编辑</a>
+          <a href="/courses/<%= c.id %>/modules">模块/小节</a>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin Login</title></head>
+<body>
+  <h2>后台登录</h2>
+  <% if (error) { %><p style="color:red;"><%= error %></p><% } %>
+  <form method="POST" action="/login">
+    <div><input name="username" placeholder="用户名" /></div>
+    <div><input name="password" type="password" placeholder="密码" /></div>
+    <button type="submit">登录</button>
+  </form>
+</body>
+</html>

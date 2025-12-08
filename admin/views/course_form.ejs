@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>课程编辑</title></head>
+<body>
+  <a href="/courses">返回列表</a>
+  <h2><%= course.id ? '编辑课程' : '新建课程' %></h2>
+  <form method="POST" action="<%= course.id ? '/courses/' + course.id : '/courses' %>">
+    <div>标题：<input name="title" value="<%= course.title || '' %>" /></div>
+    <div>副标题：<input name="subtitle" value="<%= course.subtitle || '' %>" /></div>
+    <div>封面：<input name="cover_url" value="<%= course.cover_url || '' %>" /></div>
+    <div>简介：<textarea name="description"><%= course.description || '' %></textarea></div>
+    <div>价格：<input name="price" value="<%= course.price || '' %>" /></div>
+    <div>优惠价：<input name="promo_price" value="<%= course.promo_price || '' %>" /></div>
+    <div>讲师ID：<input name="teacher_id" value="<%= course.teacher_id || '' %>" /></div>
+    <div><label><input type="checkbox" name="is_published" value="1" <%= course.is_published ? 'checked' : '' %> />上架</label></div>
+    <div><label><input type="checkbox" name="is_recommended" value="1" <%= course.is_recommended ? 'checked' : '' %> />推荐</label></div>
+    <button type="submit">保存</button>
+  </form>
+</body>
+</html>

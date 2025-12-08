@@ -1,0 +1,11 @@
+<view class="card">
+  <block wx:for="{{orders}}" wx:key="id">
+    <view style="padding:8rpx 0;">
+      <view style="font-weight:bold;">{{item.course_title}}</view>
+      <view>支付金额：¥{{item.total_price}}</view>
+      <view>状态：{{item.status}}</view>
+      <view>时间：{{item.pay_time || item.created_at}}</view>
+    </view>
+    <view style="height:1px;background:#f0f0f0;margin:8rpx 0;"></view>
+  </block>
+</view>

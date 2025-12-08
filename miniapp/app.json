@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/course-list/index",
+    "pages/course-detail/index",
+    "pages/lesson-play/index",
+    "pages/profile/index",
+    "pages/orders/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "私域课程",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark"
+  }
+}

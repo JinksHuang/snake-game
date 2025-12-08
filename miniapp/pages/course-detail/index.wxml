@@ -1,0 +1,32 @@
+<view class="card">
+  <image src="{{course.cover_url}}" style="width:100%;height:240rpx;border-radius:8rpx;" mode="aspectFill" />
+  <view style="margin-top:12rpx;">
+    <view style="font-size:34rpx;font-weight:bold;">{{course.title}}</view>
+    <view style="color:#666;">{{course.subtitle}}</view>
+    <view style="margin-top:8rpx;">
+      <text style="color:#f54;font-weight:bold;">¥{{course.promo_price || course.price}}</text>
+      <text wx:if="{{course.promo_price}}" style="text-decoration:line-through;color:#aaa;margin-left:8rpx;">¥{{course.price}}</text>
+      <text wx:if="{{purchased}}" style="margin-left:12rpx;color:#07c160;">已购买</text>
+    </view>
+  </view>
+</view>
+<view class="card">
+  <view style="font-weight:bold; margin-bottom:8rpx;">课程简介</view>
+  <rich-text nodes="{{descNodes}}"></rich-text>
+</view>
+<view class="card">
+  <view style="font-weight:bold; margin-bottom:8rpx;">目录</view>
+  <block wx:for="{{modules}}" wx:key="id">
+    <view style="font-weight:bold;margin:8rpx 0;">{{item.title}}</view>
+    <block wx:for="{{lessons[item.id]}}" wx:key="id">
+      <view class="lesson-row" data-lesson-id="{{item2.id}}" bindtap="goLesson">
+        <text>{{item2.title}}</text>
+        <text class="{{item2.is_preview || purchased ? '' : 'locked'}}">{{item2.is_preview? '试看' : (purchased ? '已解锁' : '已锁定')}}</text>
+      </view>
+    </block>
+  </block>
+</view>
+<view style="position:fixed;bottom:0;left:0;right:0;padding:12rpx;background:#fff;box-shadow:0 -4rpx 12rpx rgba(0,0,0,0.05);">
+  <button type="primary" bindtap="buy" disabled="{{purchased}}">{{purchased ? '已购买' : '立即购买'}}</button>
+  <button style="margin-top:8rpx;" bindtap="showCommunity">加企微/进社群</button>
+</view>
